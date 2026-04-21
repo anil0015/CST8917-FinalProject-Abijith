@@ -1,0 +1,68 @@
+### 1. Under $100 -> auto-approved
+POST http://localhost:7071/api/expense/start
+Content-Type: application/json
+
+{
+  "employee_name": "Abijith",
+  "employee_email": "abijith@example.com",
+  "amount": 50,
+  "category": "travel",
+  "description": "Taxi fare",
+  "manager_email": "manager@example.com"
+}
+
+### 2. Over $100 -> wait for manager approval
+POST http://localhost:7071/api/expense/start
+Content-Type: application/json
+
+{
+  "employee_name": "Abijith",
+  "employee_email": "abijith@example.com",
+  "amount": 250,
+  "category": "equipment",
+  "description": "Keyboard purchase",
+  "manager_email": "manager@example.com"
+}
+
+### 3. Manager approves
+POST http://localhost:7071/api/expense/approve
+Content-Type: application/json
+
+{
+  "instance_id": "PASTE_INSTANCE_ID_HERE",
+  "decision": "approved"
+}
+
+### 4. Manager rejects
+POST http://localhost:7071/api/expense/approve
+Content-Type: application/json
+
+{
+  "instance_id": "PASTE_INSTANCE_ID_HERE",
+  "decision": "rejected"
+}
+
+### 5. Missing required field
+POST http://localhost:7071/api/expense/start
+Content-Type: application/json
+
+{
+  "employee_name": "Abijith",
+  "employee_email": "abijith@example.com",
+  "amount": 250,
+  "category": "equipment",
+  "description": "Keyboard purchase"
+}
+
+### 6. Invalid category
+POST http://localhost:7071/api/expense/start
+Content-Type: application/json
+
+{
+  "employee_name": "Abijith",
+  "employee_email": "abijith@example.com",
+  "amount": 250,
+  "category": "gaming",
+  "description": "Keyboard purchase",
+  "manager_email": "manager@example.com"
+}

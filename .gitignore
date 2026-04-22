@@ -1,5 +1,8 @@
+# =========================
 # Python
+# =========================
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.pyo
 *.pyd
@@ -7,40 +10,75 @@ __pycache__/
 *.egg-info/
 .eggs/
 .pytest_cache/
+**/.pytest_cache/
 .venv/
+**/.venv/
 venv/
+**/venv/
 env/
+**/env/
 
-# Azure Functions local settings and secrets
+# =========================
+# Azure Functions secrets / local config
+# =========================
 local.settings.json
 **/local.settings.json
 secrets.json
+**/secrets.json
 *.secret
 *.secrets
 
-# Azurite
+# =========================
+# Azurite local storage
+# =========================
 .azurite/
+**/.azurite/
 __blobstorage__/
+**/__blobstorage__/
 __queuestorage__/
+**/__queuestorage__/
 __tablestorage__/
-*.db
+**/__tablestorage__/
 
-# VS Code
+# =========================
+# VS Code / IDE
+# =========================
 .vscode/
+**/.vscode/
+.idea/
+**/.idea/
 
+# =========================
 # OS files
+# =========================
 .DS_Store
+**/.DS_Store
 Thumbs.db
+**/Thumbs.db
 
+# =========================
 # Logs
+# =========================
 *.log
+**/*.log
 
+# =========================
 # Build / coverage
+# =========================
 dist/
+**/dist/
 build/
+**/build/
 htmlcov/
+**/htmlcov/
 .coverage
+.coverage.*
+coverage.xml
 
+# =========================
 # Azure Functions artifacts
+# =========================
 bin/
+**/bin/
 obj/
+**/obj/

@@ -1,0 +1,123 @@
+@baseUrl = http://localhost:7071/api
+
+### Health Check
+GET {{baseUrl}}/health
+
+###
+
+### Test 1: APPROVED — expense under $100
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1001",
+  "employee_name": "Nina Patel",
+  "employee_email": "nina.patel@contoso-demo.com",
+  "amount": 64,
+  "category": "supplies",
+  "description": "Office stationery for project meeting",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 2: VALID — expense requires manager approval
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1002",
+  "employee_name": "Marcus Chen",
+  "employee_email": "marcus.chen@contoso-demo.com",
+  "amount": 245,
+  "category": "software",
+  "description": "Monthly design tool subscription renewal",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 3: VALID — higher amount equipment request
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1003",
+  "employee_name": "Sofia Ramirez",
+  "employee_email": "sofia.ramirez@contoso-demo.com",
+  "amount": 420,
+  "category": "equipment",
+  "description": "Request for a second office monitor",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 4: VALID — travel request that can later time out/escalate in Logic App
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1004",
+  "employee_name": "Jordan Blake",
+  "employee_email": "jordan.blake@contoso-demo.com",
+  "amount": 180,
+  "category": "travel",
+  "description": "Train ticket for client visit in Toronto",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 5: INVALID — missing required field
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1005",
+  "employee_name": "Leah Morris",
+  "employee_email": "leah.morris@contoso-demo.com",
+  "amount": 130,
+  "category": "meals",
+  "description": "Dinner with external project partner"
+}
+
+###
+
+### Test 6: INVALID — invalid category
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1006",
+  "employee_name": "Ethan Walker",
+  "employee_email": "ethan.walker@contoso-demo.com",
+  "amount": 155,
+  "category": "entertainment",
+  "description": "Team movie night reimbursement",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 7: INVALID — bad amount
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "expenseId": "EXP-1007",
+  "employee_name": "Priya Nair",
+  "employee_email": "priya.nair@contoso-demo.com",
+  "amount": -25,
+  "category": "travel",
+  "description": "Negative amount test",
+  "manager_email": "oliver.grant@contoso-demo.com"
+}
+
+###
+
+### Test 8: Invalid JSON body
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+not valid json

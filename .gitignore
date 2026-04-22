@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Azure Functions local settings and secrets
+local.settings.json
+**/local.settings.json
+secrets.json
+*.secret
+*.secrets
+
+# Azurite
+.azurite/
+__blobstorage__/
+__queuestorage__/
+__tablestorage__/
+*.db
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build / coverage
+dist/
+build/
+htmlcov/
+.coverage
+
+# Azure Functions artifacts
+bin/
+obj/
